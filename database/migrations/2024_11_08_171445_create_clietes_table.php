@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clietes', function (Blueprint $table) {
-            $table->foreign('idCliente')->references('id')->on('usuario');
-            $table->status();
+        Schema::create('clientes', function (Blueprint $table) {
+            $table->unsignedBigInteger('id'); // Cria a coluna idCliente
+            $table->integer('status'); // Cria a coluna status
+            $table->primary('id'); // Define idCliente como chave primária
+            $table->foreign('id') // Define a relação como chave estrangeira
+                  ->references('id')
+                  ->on('usuarios')
+                  ->onDelete('cascade');
         });
     }
 
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clietes');
+        Schema::dropIfExists('clientes');
     }
 };

@@ -12,10 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('funcionarios', function (Blueprint $table) {
-            $table->foreign('idFuncionario')->references('id')->on('usuario');
-            $table->matricula();
-            $table->varchar('login',15);
-            $table->varchar('senha',10);
+            $table->unsignedBigInteger('id'); // Cria a coluna idFuncionario
+            $table->integer('matricula'); // Cria a coluna matricula
+            $table->string('login', 15); // Cria a coluna login
+            $table->string('senha', 10); // Cria a coluna senha
+
+            // Define idFuncionario como chave estrangeira
+            $table->foreign('id')
+                  ->references('id')
+                  ->on('usuarios')
+                  ->onDelete('cascade');
+
+            // Define idFuncionario como chave primária
+            $table->primary('id');
         });
     }
 

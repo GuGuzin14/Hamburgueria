@@ -12,9 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('produtos', function (Blueprint $table) {
-            $table->idPedido();
-            $table->dateTime();
-            
+            $table->id(); // Cria a coluna id como chave primária (auto incremento)
+            $table->string('descricao', 30); // Cria a coluna descricao com até 30 caracteres
+            $table->string('foto', 255); // Cria a coluna foto com até 255 caracteres
+            $table->double('preco', 10, 2); // Cria a coluna preco com 10 dígitos no total e 2 casas decimais
+            $table->integer('estoque'); // Cria a coluna estoque como inteiro
+            $table->integer('tipo'); // Cria a coluna tipo como inteiro
         });
     }
 
