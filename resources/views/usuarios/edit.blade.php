@@ -1,16 +1,31 @@
-<h1>EDITAR USUÁRIO <h1>
+<head>
+    <link href="{{ asset('css/teste.css') }}" rel="stylesheet" type="text/css">
+</head>
 
-<form action="{{route('usuarios-update',['id'=>$usuario->id])}}" method="POST">
-	@csrf
-	@method('PUT'){{--Alterar para PUT por conta do Laravel--}}
-	<label>Nome: </label>
-	<input type="text" name="name" value="{{$usuario->name}}" placeholder="Digite o nome">	
-	<br><br>
-	<label>E-mail: </label>
-	<input type="text" name="email" value="{{$usuario->email}}"placeholder="Digite o e-mail">
-	<br><br>
-	<label>Password: </label>
-	<input type="text" name="password" value="{{$usuario->password}}"placeholder="Digite a senha">
-	<br><br>
-	<p> <input type="submit" name="submit" value="Altualizar" </p>
-</form>
+<div class="form-container">
+    <h1>Editar Usuário</h1>
+
+    <form action="{{route('usuarios-update',['id'=>$usuario->id])}}" method="POST" class="edit-form">
+        @csrf
+        @method('PUT')
+
+        <div class="input-group">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" value="{{$usuario->name}}" placeholder="Digite o nome">
+        </div>
+
+        <div class="input-group">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" value="{{$usuario->email}}" placeholder="Digite o e-mail">
+        </div>
+
+        <div class="input-group">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" value="{{$usuario->password}}" placeholder="Digite a senha">
+        </div>
+
+        <div class="form-action">
+            <button type="submit" name="submit">Atualizar</button>
+        </div>
+    </form>
+</div>
