@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\FuncionarioController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,3 +31,18 @@ Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->name('cl
 Route::get('/produtos', [ProdutoController::class, 'index'])->name('produtos.index');
 Route::get('/produtos/create', [ProdutoController::class, 'create'])->name('produtos.create');
 Route::post('/produtos', [ProdutoController::class, 'store'])->name('produtos.store');
+
+Route::get('/pedidos', [PedidoController::class, 'index'])->name('pedidos.index'); // Lista todos os pedidos
+Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.create'); // Formulário de criação de pedido
+Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store'); // Armazena um novo pedido
+Route::get('/pedidos/{id}/edit', [PedidoController::class, 'edit'])->name('pedidos.edit'); // Formulário de edição de pedido
+Route::put('/pedidos/{id}', [PedidoController::class, 'update'])->name('pedidos.update'); // Atualiza um pedido existente
+Route::delete('/pedidos/{id}', [PedidoController::class, 'destroy'])->name('pedidos.destroy'); // Remove um pedido
+
+//Rotas para funcionario
+Route::get('/funcionarios', [FuncionarioController::class, 'index'])->name('funcionarios.index');
+Route::get('/funcionarios/create', [FuncionarioController::class, 'create'])->name('funcionarios.create');
+Route::post('/funcionarios', [FuncionarioController::class, 'store'])->name('funcionarios.store');
+Route::get('/funcionarios/{id}/edit', [FuncionarioController::class, 'edit'])->name('funcionarios.edit');
+Route::put('/funcionarios/{id}', [FuncionarioController::class, 'update'])->name('funcionarios.update');
+Route::delete('/funcionarios/{id}', [FuncionarioController::class, 'destroy'])->name('funcionarios.destroy');
