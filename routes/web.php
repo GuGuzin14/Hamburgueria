@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProdutoController;
-use App\Http\Controllers\PedidoController;
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,10 +32,3 @@ Route::get('/produtos', [ProdutoController::class, 'index'])->name('produtos.ind
 Route::get('/produtos/create', [ProdutoController::class, 'create'])->name('produtos.create');
 Route::post('/produtos', [ProdutoController::class, 'store'])->name('produtos.store');
 
-// Rotas para Pedidos
-Route::get('/pedidos', [PedidoController::class, 'index'])->name('pedidos.index'); // Lista todos os pedidos
-Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.create'); // Formulário de criação de pedido
-Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store'); // Armazena um novo pedido
-Route::get('/pedidos/{id}/edit', [PedidoController::class, 'edit'])->name('pedidos.edit'); // Formulário de edição de pedido
-Route::put('/pedidos/{id}', [PedidoController::class, 'update'])->name('pedidos.update'); // Atualiza um pedido existente
-Route::delete('/pedidos/{id}', [PedidoController::class, 'destroy'])->name('pedidos.destroy'); // Remove um pedido
